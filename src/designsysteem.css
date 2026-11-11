@@ -1,0 +1,94 @@
+/* Visser Nederland – designsysteem (sitebreed). Bron: GitHub dondrs/visser-nederland-site, src/designsysteem.css.
+   Geladen in de Webflow-head (render-blocking, zodat er geen flits van oude stijlen is).
+   Brengt bestaande classes/components in lijn met de stijlgids (/designsysteem-concept).
+   Kleuren: merkblauw #008FDB, hover #006AA3, tint #E5F4FC, navy #00283D, oranje alleen accent (eyebrow). Op donker: #8FC3E3.
+   Opruimen: zodra een class in Webflow zelf goed staat, kan de regel hier weg. */
+:root{--vn-brand:#008fdb;--vn-brand-hover:#006aa3;--vn-brand-tint:#e5f4fc;--vn-navy:#00283d;--vn-blue:#006aa3;--vn-ico-dark:#8fc3e3;--vn-line:#dde5ea;--vn-orange:#f29400}
+
+/* focus overal: blauwe ring 1,5px */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:1.5px solid var(--vn-brand);outline-offset:3px}
+.vn-on-dark:focus-visible,.vn-on-dark :focus-visible{outline-color:var(--vn-ico-dark)}
+
+/* PRIMARY – component Button__primary (varianten Blue, White, Dark, Alternative) */
+.button__primary.button__primary{border-radius:999px;background-color:var(--vn-brand);color:#fff;transition:background-color var(--vn-dur-fast) var(--vn-ease)}
+.button__primary.button__primary:hover{background-color:var(--vn-brand-hover)}
+.button__primary.vn-on-dark:hover{background-color:#1aa3ec}
+.button__primary-wrap.button__primary-wrap{height:48px;padding:8px 8px 8px 20px;gap:12px;border-width:0;background:transparent;color:#fff}
+.button__primary.button__primary .button__primary-wrap > div:first-child,.button__primary .text-block-2{color:#fff;font-size:1rem;font-weight:600;line-height:1}
+.button__primary--inner-circle.button__primary--inner-circle{width:32px;height:32px;border:0;background:#fff}
+.button__primary--icon.button__primary--icon{width:16px;height:16px}
+.button__primary--inner-circle .vn-icon{width:16px;height:16px;color:var(--vn-brand)}
+
+/* PRIMARY zonder cirkel (oude losse knoppen) */
+.blue-button.blue-button,.vn-pdp-cta__btn.vn-pdp-cta__btn,.vn-button__primary.vn-button__primary,.button-3.is-primary{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 24px;border:0;border-radius:999px;background:var(--vn-brand);color:#fff;font-size:1rem;font-weight:600;line-height:1;text-decoration:none;transition:background-color var(--vn-dur-fast) var(--vn-ease)}
+.blue-button.blue-button:hover,.vn-pdp-cta__btn.vn-pdp-cta__btn:hover,.vn-button__primary.vn-button__primary:hover,.button-3.is-primary:hover{background:var(--vn-brand-hover);color:#fff}
+
+/* SECONDARY – component Button__secondary + oude classes; op donker witte tekst */
+.plan-route.plan-route,.button-3.is-secondary,.locatie_button.locatie_button,.next--button.next--button,.contact-button_socials.contact-button_socials,.contact-button_whatsapp.contact-button_whatsapp,.vn-button__secondary.vn-button__secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 20px;border:0;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1.5px var(--vn-brand);color:var(--vn-blue);font-size:1rem;font-weight:600;line-height:1;text-decoration:none;transition:background-color var(--vn-dur-fast) var(--vn-ease)}
+.plan-route.plan-route:hover,.button-3.is-secondary:hover,.locatie_button.locatie_button:hover,.next--button.next--button:hover,.contact-button_socials.contact-button_socials:hover,.contact-button_whatsapp.contact-button_whatsapp:hover,.vn-button__secondary.vn-button__secondary:hover{background:var(--vn-brand-tint)}
+.plan-route.plan-route,.button-3.is-secondary,.locatie_button.locatie_button,.vn-button--small.vn-button--small{height:40px;padding:0 16px;font-size:.9375rem}
+.plan-route p,.locatie_button p{margin:0;color:inherit;font:inherit}
+.plan-route .icon-embed-xxsmall,.locatie_button .icon-embed-xxsmall,.contact-button_socials .icon-embed-xxsmall,.contact-button_whatsapp .icon-embed-xxsmall{width:16px;height:16px;color:var(--vn-brand)}
+.vn-on-dark.plan-route,.vn-on-dark.button-3.is-secondary,.vn-on-dark.locatie_button,.vn-on-dark.next--button,.vn-on-dark.contact-button_socials,.vn-on-dark.contact-button_whatsapp,.vn-on-dark.vn-button__secondary,.button__secondary.vn-on-dark,.button__icon.vn-on-dark{color:#fff}
+.vn-on-dark.plan-route:hover,.vn-on-dark.button-3.is-secondary:hover,.vn-on-dark.locatie_button:hover,.vn-on-dark.next--button:hover,.vn-on-dark.contact-button_socials:hover,.vn-on-dark.contact-button_whatsapp:hover,.vn-on-dark.vn-button__secondary:hover,.button__secondary.vn-on-dark:hover,.button__icon.vn-on-dark:hover{background:rgba(0,143,219,.18)}
+.vn-on-dark.locatie_button .icon-embed-xxsmall,.vn-on-dark.contact-button_socials .icon-embed-xxsmall,.vn-on-dark.contact-button_whatsapp .icon-embed-xxsmall{color:var(--vn-ico-dark)}
+
+/* TEKSTLINK – component Tekstlink (was Button-tert) */
+.button-tert.button-tert{display:inline-flex;align-items:center;min-height:44px;gap:0;color:var(--vn-blue);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;text-decoration-color:rgba(0,143,219,.5);transition:color var(--vn-dur-fast) var(--vn-ease),text-decoration-color var(--vn-dur-fast) var(--vn-ease)}
+.button-tert.button-tert:hover{text-decoration-color:var(--vn-brand)}
+.button-tert .button-circle{display:none}
+.button-tert > div{color:inherit}
+.button-tert.vn-on-dark{color:#fff;text-decoration-color:rgba(255,255,255,.35)}
+.button-tert.vn-on-dark:hover{text-decoration-color:#fff}
+.text-link,.vn-link__text,.vn-pdp__speclink{color:var(--vn-blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;text-decoration-color:rgba(0,143,219,.5)}
+.text-link:hover,.vn-link__text:hover,.vn-pdp__speclink:hover{text-decoration-color:var(--vn-brand)}
+.vn-link__arrow{display:none}
+
+/* ICOONKNOP – rond (component Icoonknop, cascading slider, slider-pijlen, footer-socials) */
+.cascading-slider__button.cascading-slider__button{width:48px;height:48px;border:0;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1.5px var(--vn-brand);color:var(--vn-brand);transition:background-color var(--vn-dur-fast) var(--vn-ease)}
+.cascading-slider__button.cascading-slider__button:hover{background:var(--vn-brand-tint)}
+.swiper-next--img,.swiper-prev--img{display:none!important}
+.swiper-next,.swiper-next--next,.swiper-prev--prev,.swiper-prev--prev-2{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:999px;background-color:var(--vn-brand);color:#fff;transition:background-color var(--vn-dur-fast) var(--vn-ease)}
+.swiper-next:hover,.swiper-next--next:hover,.swiper-prev--prev:hover,.swiper-prev--prev-2:hover{background-color:var(--vn-brand-hover)}
+.swiper-next::before,.swiper-next--next::before,.swiper-prev--prev::before,.swiper-prev--prev-2::before{content:"";width:20px;height:20px;background-color:currentColor;-webkit-mask:var(--vn-i-arrow) center/contain no-repeat;mask:var(--vn-i-arrow) center/contain no-repeat}
+.swiper-prev--prev::before,.swiper-prev--prev-2::before{transform:scaleX(-1)}
+:root{--vn-i-arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E")}
+.footer-social-icon.footer-social-icon{width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.08);color:var(--vn-ico-dark);transition:background-color var(--vn-dur-fast) var(--vn-ease)}
+.footer-social-icon.footer-social-icon:hover{background:rgba(0,143,219,.25);color:#fff}
+.footer-social-icon .icon-embed-xxsmall{width:16px;height:16px;color:inherit}
+.footer-social-icon.is-artikel{background:var(--vn-brand-tint);color:var(--vn-brand)}
+.footer-social-icon.is-artikel .icon-embed-xxsmall{color:inherit}
+
+/* TABS / FILTERS als chips */
+.career_tab-link.career_tab-link,.tab--link.tab--link{display:inline-flex;align-items:center;height:40px;padding:0 16px;border:0;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--vn-line);color:var(--vn-navy);font-size:.9375rem;font-weight:500;transition:background-color var(--vn-dur-fast) var(--vn-ease),color var(--vn-dur-fast) var(--vn-ease)}
+.career_tab-link.career_tab-link:hover,.tab--link.tab--link:hover{background:var(--vn-brand-tint)}
+.career_tab-link.w--current,.tab--link.w--current{background:var(--vn-brand);box-shadow:none;color:#fff}
+.tab--link .tab-p{color:inherit}
+
+/* ICONEN – één kleur per achtergrond */
+.icon-embed-xxsmall-blue,.icon-embed-xxsmall.blue,.icon-embed-small.blue,.icon-embed-custom,.icon-embed-custom-4,.icon-embed-custom-5,.icon-xsmall-3,.icon-embed-xxsmall.dark-4,.icon-embed-xxsmall.dark-10{color:var(--vn-brand)}
+.contact_locatie .icon-embed-xxsmall,.horizontal-wrap_s .icon-embed-xxsmall{color:var(--vn-brand)}
+.vn-on-dark[class*=icon-embed],.vn-on-dark [class*=icon-embed],.footer-link .icon-embed-xxsmall,.horizontal-wrap_s.align--top .icon-embed-xxsmall{color:var(--vn-ico-dark)}
+.checkmark-wrap,.checkmark-wrap-2{background:transparent!important;border:0!important;color:var(--vn-brand)}
+.checkmark-wrap.color--orange{color:var(--vn-brand)}
+.checkmark-wrap.color--orange .icon-embed-custom_check{color:var(--vn-brand)}
+.vn-on-dark.checkmark-wrap,.vn-on-dark.checkmark-wrap-2{color:var(--vn-ico-dark)}
+.icon-wrap.icon-wrap.icon-wrap.icon-wrap,.usp-card .icon-embed-small.blue{display:flex;align-items:center;justify-content:center;flex:none;width:48px;height:48px;padding:12px;border:0;border-radius:12px;background:var(--vn-brand-tint);color:var(--vn-brand)}
+.icon-wrap.icon-wrap [class*=icon-embed].w-embed{width:24px;height:24px;color:var(--vn-brand)}
+.usp-card .icon-embed-small.blue{background:#fff}
+.vn-on-dark.icon-wrap.icon-wrap.icon-wrap.icon-wrap,.usp-card.dark .icon-embed-small.blue{background:rgba(0,143,219,.16);color:var(--vn-ico-dark)}
+.vn-on-dark.icon-wrap.icon-wrap [class*=icon-embed].w-embed{color:var(--vn-ico-dark)}
+.button-circle.blue,.button-circle.blue.is-light,.button-circle.is-white.dark-9{width:32px;height:32px;border:0;border-radius:999px;background:var(--vn-brand);color:#fff;transition:background-color var(--vn-dur-fast) var(--vn-ease)}
+.button-circle [class*=icon-embed]{width:16px;height:16px;color:inherit}
+a:hover > .button-circle.blue,a:hover .button-circle.blue{background:var(--vn-brand-hover)}
+
+/* EYEBROWS – pil 28px, oranje stip, hoofdletters */
+.eyebrow-wrap.eyebrow-wrap{display:inline-flex;align-items:center;gap:8px;height:28px;padding:0 12px;border:0;border-radius:999px;background:#fff3df;color:#7a4b00}
+.eyebrow-wrap .eyebrow-block,.eyebrow-wrap [class^=eyebrow-block]{flex:none;width:8px;height:8px;border-radius:999px;background:var(--vn-orange)}
+.eyebrow-wrap p,.eyebrow-wrap .eyebrow-text,.eyebrow-wrap > div:not([class^=eyebrow-block]){margin:0;color:inherit;font-size:.8125rem;font-weight:600;letter-spacing:.06em;line-height:1;text-transform:uppercase}
+.eyebrow-wrap.vn-on-dark,.eyebrow-wrap.glass{background:rgba(242,148,0,.16);color:#ffd08a}
+.vn-eyebrow.vn-eyebrow{height:28px;padding:0 12px;border-radius:999px;background:#fff3df;color:#7a4b00;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.vn-eyebrow.vn-eyebrow--outline{background:transparent;box-shadow:inset 0 0 0 1px currentColor;color:var(--vn-navy)}
+
+/* KAARTEN – radius 16; hover staat in de Webflow-classes (lichte schaduw, geen rand) */
+.portfolio1_card,.about-card,.timeline3_card,.product__item--card,.contact-card,.usp-card,.usp__card,.process_step-card,.toepassing-card,.product-card,.career_card-filled{border-radius:16px}
