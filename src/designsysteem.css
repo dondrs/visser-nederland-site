@@ -92,3 +92,12 @@ a:hover > .button-circle.blue,a:hover .button-circle.blue{background:var(--vn-br
 
 /* KAARTEN – radius 16; hover staat in de Webflow-classes (lichte schaduw, geen rand) */
 .portfolio1_card,.about-card,.timeline3_card,.product__item--card,.contact-card,.usp-card,.usp__card,.process_step-card,.toepassing-card,.product-card,.career_card-filled{border-radius:16px}
+
+/* ICONEN – oude gevulde vinkjes en pijltjes in losse embeds (o.a. CMS-templates, formulieren) tonen als lijnicoon */
+:root{--vn-i-check:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
+.checkmark-wrap > .w-embed,.checkmark-wrap-2 > .w-embed{display:flex;align-items:center;justify-content:center;width:20px;height:20px}
+.checkmark-wrap > .w-embed > svg,.checkmark-wrap-2 > .w-embed > svg{display:none}
+.checkmark-wrap > .w-embed::before,.checkmark-wrap-2 > .w-embed::before{content:"";width:20px;height:20px;background-color:currentColor;-webkit-mask:var(--vn-i-check) center/contain no-repeat;mask:var(--vn-i-check) center/contain no-repeat}
+.button-circle > .w-embed{display:flex;align-items:center;justify-content:center}
+.button-circle > .w-embed > svg{display:none}
+.button-circle > .w-embed::before{content:"";width:16px;height:16px;background-color:currentColor;-webkit-mask:var(--vn-i-arrow) center/contain no-repeat;mask:var(--vn-i-arrow) center/contain no-repeat}
