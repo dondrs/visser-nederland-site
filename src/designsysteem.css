@@ -101,3 +101,6 @@ a:hover > .button-circle.blue,a:hover .button-circle.blue{background:var(--vn-br
 .button-circle > .w-embed{display:flex;align-items:center;justify-content:center}
 .button-circle > .w-embed > svg{display:none}
 .button-circle > .w-embed::before{content:"";width:16px;height:16px;background-color:currentColor;-webkit-mask:var(--vn-i-arrow) center/contain no-repeat;mask:var(--vn-i-arrow) center/contain no-repeat}
+
+/* KOPPEN – geen automatische afbreekstreepjes in koppen (gaf "leveringspart-ner" op mobiel) */
+h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
