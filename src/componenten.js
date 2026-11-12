@@ -774,3 +774,20 @@
   // ook na filteren/laden van extra items
   new MutationObserver(() => zet()).observe(document.body, { childList: true, subtree: true });
 })();
+
+
+// Scrollvakken (12-11-2026): Lenis vangt het muiswiel op voor de hele pagina, waardoor
+// vakken met een eigen scrollbalk (filters op /producten) niet met het wiel scrollen.
+// data-lenis-prevent laat het wiel daar gewoon het vak zelf scrollen.
+(() => {
+  const zet = () => {
+    document.querySelectorAll(".vn-flt__body").forEach((el) => el.setAttribute("data-lenis-prevent", ""));
+    document.querySelectorAll("body *").forEach((el) => {
+      if (el.hasAttribute("data-lenis-prevent") || el.closest(".w-embed svg")) return;
+      const o = getComputedStyle(el).overflowY;
+      if ((o === "auto" || o === "scroll") && el.scrollHeight > el.clientHeight + 4) el.setAttribute("data-lenis-prevent", "");
+    });
+  };
+  if (document.readyState === "complete") zet();
+  else window.addEventListener("load", zet);
+})();
