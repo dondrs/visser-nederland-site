@@ -127,3 +127,11 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 .nieuws--item .button-circle > .w-embed::before{transition:transform var(--vn-dur-fast) var(--vn-ease)}
 .nieuws--item:hover .button-circle.blue{background:var(--vn-brand-hover);color:#fff}
 .nieuws--item:hover .button-circle > .w-embed::before{transform:translateX(2px)}
+
+/* CATEGORIE-PIL – categorie als eyebrow-pil in de foto van nieuws-/projectkaarten (12-11-2026) */
+.news_img-wrapper{position:relative}
+.news_img-wrapper .blog_badge{position:absolute;top:.75rem;left:.75rem;right:auto;bottom:auto;z-index:1;padding:0!important;border-radius:0;background:none!important}
+.news_img-wrapper .blog_badge .badge-substract{display:none}
+.news_img-wrapper .badge_horizontal-wrap{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:999px;background:#fff3df;color:#7a4b00}
+.news_img-wrapper .badge_horizontal-wrap p{margin:0;font-size:14px;line-height:1;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:inherit}
+.news_img-wrapper .badge_horizontal-wrap .eyebrow-block{flex:none;width:8px;height:8px;border-radius:50%;background:#f29400}
