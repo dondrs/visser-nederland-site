@@ -176,3 +176,6 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 .checkmark-wrap > .w-embed::before,.checkmark-wrap-2 > .w-embed::before{content:"";display:block;width:13px;height:13px;background-color:currentColor;-webkit-mask:var(--vn-i-check-b) center/contain no-repeat;mask:var(--vn-i-check-b) center/contain no-repeat}
 .vn-on-dark.checkmark-wrap,.vn-on-dark.checkmark-wrap-2{background:rgba(72,201,111,.2)!important;color:var(--_primitives---color--green--400,#74d390)!important}
 .vn-vac-rt--check li::before{content:""!important;width:24px!important;height:24px!important;border-radius:50%!important;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2348C96F' stroke-width='3.2' stroke-linecap='square'%3E%3Cpath d='M4.5 12.5l5 5L19.5 7'/%3E%3C/svg%3E") center/13px no-repeat,var(--vn-check-bg)!important;border:0!important}
+/* Vacature-eisen: vinkje uitgelijnd met de eerste regel tekst */
+.vn-vac-offer__ask .vn-vac-rt--check li{padding-left:2.25rem!important;text-indent:-2.25rem}
+.vn-vac-offer__ask .vn-vac-rt--check li::before{position:static!important;display:inline-block!important;vertical-align:-6px;margin-right:.75rem;text-indent:0}
