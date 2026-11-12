@@ -80,7 +80,7 @@
     const status = document.querySelector("[data-vn-lijst-status]");
     const regel = lijst.find((r) => r.id === location.pathname);
     knop.classList.toggle("is-added", !!regel);
-    tekst.textContent = regel ? "Nog 1 toevoegen" : "Op aanvraaglijst zetten";
+    tekst.textContent = regel ? "Nog 1 toevoegen" : "Op aanvraaglijst";
     if (!status) return;
     status.textContent = "";
     if (regel) {

@@ -104,3 +104,6 @@ a:hover > .button-circle.blue,a:hover .button-circle.blue{background:var(--vn-br
 
 /* KOPPEN – geen automatische afbreekstreepjes in koppen (gaf "leveringspart-ner" op mobiel) */
 h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
+
+/* MENU – werkvelden: icoon boven de titel, net als diensten (12-11-2026) */
+@media (min-width:1280px){.mega-nav #vn-menu-werkvelden a.mega-nav__panel-link{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:.125rem;padding:1rem}.mega-nav #vn-menu-werkvelden a.mega-nav__panel-link::before{grid-area:auto;align-self:auto;width:1.5rem;height:1.5rem;margin:0 0 .75rem}}
