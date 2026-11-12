@@ -179,3 +179,22 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 /* Vacature-eisen: vinkje uitgelijnd met de eerste regel tekst */
 .vn-vac-offer__ask .vn-vac-rt--check li{padding-left:2.25rem!important;text-indent:-2.25rem}
 .vn-vac-offer__ask .vn-vac-rt--check li::before{position:static!important;display:inline-block!important;vertical-align:-6px;margin-right:.75rem;text-indent:0}
+
+/* PRIMARY – één maat overal, gelijk aan de navbarknop (12-11-2026): 40px hoog, witte cirkel 26px, pijl 14px */
+.button__primary.button__primary{height:40px!important;min-height:40px!important;border-radius:999px!important;background-color:var(--vn-brand,#008fdb)!important}
+.button__primary.button__primary:hover{background-color:#1aa3ec!important}
+.button__primary .button__primary-wrap.button__primary-wrap{height:40px!important;min-height:40px!important;padding:7px 7px 7px 16px!important;gap:10px!important;border-width:0!important}
+.button__primary .button__primary-wrap > div:first-child,.button__primary .text-block-2{font-size:15px!important;font-weight:600!important;line-height:1!important;color:#fff!important}
+.button__primary .button__primary--inner-circle.button__primary--inner-circle{width:26px!important;height:26px!important;min-width:26px;border:0!important;background:#fff!important;transition:transform var(--vn-dur-fast) var(--vn-ease)}
+.button__primary .button__primary--icon,.button__primary .button__primary--inner-circle .vn-icon{width:14px!important;height:14px!important}
+.button__primary:hover .button__primary--inner-circle{transform:translateX(2px)}
+/* kaartknoppen in het menu: zelfde maat */
+.mega-nav .has--card .mega-nav__card-cta,.mega-nav .has--card a.mega-nav__card-cta[href]{height:40px!important;min-height:40px!important;padding:0 7px 0 16px!important;gap:10px!important;border-radius:999px!important;background:var(--vn-brand,#008fdb)!important;color:#fff!important;font-size:15px!important;font-weight:600!important;line-height:1!important}
+.mega-nav .has--card .mega-nav__card-cta:hover,.mega-nav .has--card a.mega-nav__card-cta[href]:hover{background:#1aa3ec!important}
+.mega-nav .has--card .mega-nav__card-cta-label{font-size:15px!important;font-weight:600!important;line-height:1!important}
+.mega-nav .has--card .mega-nav__card-cta-icon{box-sizing:border-box!important;width:26px!important;height:26px!important;padding:6px!important;border-radius:999px!important;background:#fff!important;color:var(--vn-brand,#008fdb)!important}
+/* kaartteksten in het menu: zelfde letter als de andere menutegels */
+.mega-nav .has--card .mega-nav__panel-link-text{font-family:"Inter Variablefont Opsz Wght",Arial,sans-serif!important;font-size:16px!important;font-weight:600!important;line-height:1.3!important}
+.mega-nav .has--card .mega-nav__panel-link-desc{font-family:"Inter Variablefont Opsz Wght",Arial,sans-serif!important;font-size:14px!important;font-weight:400!important;line-height:1.35!important}
+/* productpagina: knoppen niet uitrekken */
+.product-hero .two-button-wrapper .button__primary-wrap{justify-content:flex-start!important;width:auto!important}
