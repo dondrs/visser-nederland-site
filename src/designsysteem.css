@@ -236,3 +236,6 @@ html.vn-anim:not(.vn-anim-done) :is(.hero7_section,.section-hero_toepassing) :is
 /* PRODUCTENOVERZICHT – meer ruimte tussen navbar en "Ons assortiment" (12-11-2026) */
 @media (min-width:992px){.hero-products-page.is-basic{padding-top:144px!important}}
 @media (max-width:991px){.hero-products-page.is-basic{padding-top:112px!important}}
+
+/* NAVBAR VAST – topbar (24/7) en balk blijven even hoog bij scrollen, geen verspringing bij paginawissel (12-11-2026) */
+@media (min-width:1280px){html.vn-nav-scrolled{--vn-top-h:36px!important;--vn-bar-h:80px!important}}
