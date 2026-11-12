@@ -110,7 +110,10 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 
 /* PRODUCTPAGINA – foto nooit groter dan het origineel, één knop voor de aanvraaglijst (12-11-2026) */
 .product-img_wrap.is-product{display:flex;align-items:center;justify-content:center;align-self:start;aspect-ratio:4/3;padding:2rem}
-.product-img_wrap.is-product .product-foto_embed{width:auto;height:auto;max-width:100%;max-height:100%;aspect-ratio:auto}
+.product-img_wrap.is-product .product-foto_embed{width:auto;height:auto;min-width:min(100%,260px);max-width:100%;max-height:100%;aspect-ratio:auto;object-fit:contain}
 .vn-lijst-add .vn-lijst-add__btn{display:none!important}
 .vn-lijst-add{margin-top:0!important}
 .button__primary--icon.white-5{content:url("https://cdn.prod.website-files.com/68a4bedc3085e936f7503f29/6a0eb12747684cfb0f8ba63c_arrow-right.svg")}
+
+/* CONTACTKNOPPEN – iconen klapten in tot 4px breed (12-11-2026) */
+.contact-button_whatsapp svg,.contact-button_socials svg{width:1.25rem;height:1.25rem;flex:0 0 auto}
