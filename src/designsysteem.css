@@ -264,7 +264,10 @@ html.vn-anim:not(.vn-anim-done) :is(.hero7_section,.section-hero_toepassing) :is
 /* Grote afspeelknop alleen vóór de start en bij pauze; tijdens afspelen klikt de hele video op pauze */
 .vn-vp-speler.is-vn-speelt .bunny-player__big-btn{opacity:0;transform:scale(.9)}
 .vn-vp-speler .bunny-player__big-btn{transition:opacity .35s cubic-bezier(.23,1,.32,1),transform .35s cubic-bezier(.23,1,.32,1)}
-/* Volledig scherm */
+/* Volledig scherm (ook de terugval als de browser de Fullscreen-API niet uitvoert) */
+.vn-vp-speler.is-vn-fs-nep{position:fixed!important;inset:0!important;z-index:100000!important;width:100vw!important;height:100vh!important;max-width:none!important;border-radius:0!important;background:#000}
+html.vn-fs-nep,html.vn-fs-nep body{overflow:hidden!important}
+.vn-vp-speler.is-vn-fs-nep video,.vn-vp-speler.is-vn-fs-nep .bunny-player__placeholder{object-fit:contain;width:100%;height:100%}
 .vn-vp-speler.is-vn-fs{border-radius:0;background:#000}
 .vn-vp-speler.is-vn-fs video,.vn-vp-speler.is-vn-fs .bunny-player__placeholder{object-fit:contain}
 @media (max-width:767px){.vn-vp{gap:8px;padding:32px 10px 10px}.vn-vp__tijd{min-width:30px;font-size:12px}.vn-vp__btn{width:30px;height:30px}}

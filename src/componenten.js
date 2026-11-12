@@ -860,23 +860,35 @@
       knopGeluid.setAttribute("aria-label", video.muted ? "Geluid aan" : "Geluid uit");
     }
 
+    // Volledig scherm: eerst de echte Fullscreen-API op de speler (bediening blijft zichtbaar),
+    // anders de video zelf (iPhone), en als de browser niets doet: speler over het hele venster (vaste laag).
+    const nep = (aan) => {
+      speler.classList.toggle("is-vn-fs-nep", aan);
+      document.documentElement.classList.toggle("vn-fs-nep", aan);
+      fsWissel();
+    };
     knopScherm.addEventListener("click", () => {
-      if (fsEl()) {
-        (document.exitFullscreen || document.webkitExitFullscreen).call(document);
-      } else if (speler.requestFullscreen) {
-        speler.requestFullscreen();
-      } else if (speler.webkitRequestFullscreen) {
-        speler.webkitRequestFullscreen();
-      } else if (video.webkitEnterFullscreen) {
-        video.webkitEnterFullscreen(); // iPhone
-      }
+      if (speler.classList.contains("is-vn-fs-nep")) return nep(false);
+      if (fsEl()) return (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      let p = null;
+      try {
+        if (speler.requestFullscreen) p = speler.requestFullscreen();
+        else if (speler.webkitRequestFullscreen) speler.webkitRequestFullscreen();
+        else if (video.webkitEnterFullscreen) return video.webkitEnterFullscreen(); // iPhone
+      } catch (e) {}
+      const terugval = () => { if (!fsEl()) nep(true); };
+      if (p && p.catch) p.catch(terugval);
+      setTimeout(terugval, 600); // sommige browsers/ingesloten vensters doen niets en geven ook geen fout
     });
-    const fsWissel = () => {
-      const aan = fsEl() === speler;
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && speler.classList.contains("is-vn-fs-nep")) nep(false);
+    });
+    function fsWissel() {
+      const aan = fsEl() === speler || speler.classList.contains("is-vn-fs-nep");
       speler.classList.toggle("is-vn-fs", aan);
       knopScherm.innerHTML = aan ? ICON.klein : ICON.groot;
       knopScherm.setAttribute("aria-label", aan ? "Volledig scherm sluiten" : "Volledig scherm");
-    };
+    }
     document.addEventListener("fullscreenchange", fsWissel);
     document.addEventListener("webkitfullscreenchange", fsWissel);
 
