@@ -107,3 +107,10 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 
 /* MENU – werkvelden: icoon boven de titel, net als diensten (12-11-2026) */
 @media (min-width:1280px){.mega-nav #vn-menu-werkvelden a.mega-nav__panel-link{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:.125rem;padding:1rem}.mega-nav #vn-menu-werkvelden a.mega-nav__panel-link::before{grid-area:auto;align-self:auto;width:1.5rem;height:1.5rem;margin:0 0 .75rem}}
+
+/* PRODUCTPAGINA – foto nooit groter dan het origineel, één knop voor de aanvraaglijst (12-11-2026) */
+.product-img_wrap.is-product{display:flex;align-items:center;justify-content:center;align-self:start;aspect-ratio:4/3;padding:2rem}
+.product-img_wrap.is-product .product-foto_embed{width:auto;height:auto;max-width:100%;max-height:100%;aspect-ratio:auto}
+.vn-lijst-add .vn-lijst-add__btn{display:none!important}
+.vn-lijst-add{margin-top:0!important}
+.button__primary--icon.white-5{content:url("https://cdn.prod.website-files.com/68a4bedc3085e936f7503f29/6a0eb12747684cfb0f8ba63c_arrow-right.svg")}

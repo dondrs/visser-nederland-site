@@ -55,32 +55,45 @@
     return { id: location.pathname, naam, merk, foto, url: location.pathname };
   }
 
+  // Elke knop met [data-vn-lijst-add] zet het product op de lijst (ook de grote knop
+  // "Op aanvraaglijst" in de producthero). Vangen in de capture-fase, zodat een oude
+  // Webflow-interactie (modal) op die knop niet meer afgaat.
   function initProductKnop() {
-    const knop = document.querySelector("[data-vn-lijst-add]");
-    if (!knop) return;
-    knop.addEventListener("click", () => {
-      const p = productGegevens();
-      if (!p.naam) return;
-      const lijst = lees();
-      const bestaand = lijst.find((r) => r.id === p.id);
-      if (bestaand) {
-        bestaand.aantal = Math.min(MAX_AANTAL, (parseInt(bestaand.aantal, 10) || 1) + 1);
-      } else {
-        if (lijst.length >= MAX_REGELS) return;
-        lijst.push({ ...p, aantal: 1 });
-      }
-      schrijf(lijst);
-    });
+    if (!document.querySelector("[data-vn-lijst-add]")) return;
+    document.addEventListener(
+      "click",
+      (e) => {
+        const knop = e.target.closest && e.target.closest("[data-vn-lijst-add]");
+        if (!knop) return;
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        const p = productGegevens();
+        if (!p.naam) return;
+        const lijst = lees();
+        const bestaand = lijst.find((r) => r.id === p.id);
+        if (bestaand) {
+          bestaand.aantal = Math.min(MAX_AANTAL, (parseInt(bestaand.aantal, 10) || 1) + 1);
+        } else {
+          if (lijst.length >= MAX_REGELS) return;
+          lijst.push({ ...p, aantal: 1 });
+        }
+        schrijf(lijst);
+      },
+      true
+    );
   }
 
   function bijwerkenProductKnop(lijst) {
-    const knop = document.querySelector("[data-vn-lijst-add]");
-    if (!knop) return;
-    const tekst = knop.querySelector("[data-vn-lijst-add-tekst]") || knop;
+    const knoppen = document.querySelectorAll("[data-vn-lijst-add]");
+    if (!knoppen.length) return;
     const status = document.querySelector("[data-vn-lijst-status]");
     const regel = lijst.find((r) => r.id === location.pathname);
-    knop.classList.toggle("is-added", !!regel);
-    tekst.textContent = regel ? "Nog 1 toevoegen" : "Op aanvraaglijst";
+    knoppen.forEach((knop) => {
+      const tekst = knop.querySelector("[data-vn-lijst-add-tekst]") || knop;
+      knop.classList.toggle("is-added", !!regel);
+      tekst.textContent = regel ? "Nog 1 toevoegen" : "Op aanvraaglijst";
+      if (knop.tagName === "A") knop.setAttribute("role", "button");
+    });
     if (!status) return;
     status.textContent = "";
     if (regel) {
