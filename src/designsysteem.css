@@ -115,5 +115,3 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 .vn-lijst-add{margin-top:0!important}
 .button__primary--icon.white-5{content:url("https://cdn.prod.website-files.com/68a4bedc3085e936f7503f29/6a0eb12747684cfb0f8ba63c_arrow-right.svg")}
 
-/* CONTACTKNOPPEN – iconen klapten in tot 4px breed (12-11-2026) */
-.contact-button_whatsapp svg,.contact-button_socials svg{width:1.25rem;height:1.25rem;flex:0 0 auto}
