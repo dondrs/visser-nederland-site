@@ -116,3 +116,14 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 .vn-lijst-add{margin-top:0!important}
 .button__primary--icon.white-5{content:url("https://cdn.prod.website-files.com/68a4bedc3085e936f7503f29/6a0eb12747684cfb0f8ba63c_arrow-right.svg")}
 
+
+/* NIEUWSKAART – hover-kaart met ruimte rondom, pijlknop zoals designsysteem (12-11-2026) */
+.nieuws--item{padding:.75rem .75rem 1.25rem!important;background-color:transparent;transition:background-color var(--vn-dur-fast) var(--vn-ease),box-shadow var(--vn-dur-fast) var(--vn-ease)}
+.nieuws--item:hover{background-color:#fff}
+.nieuws--item .vertical_wrap,.nieuws--item .align--wrapper{padding-left:.25rem;padding-right:.25rem}
+.nieuws--item .section-diensten_link.is-news,.nieuws--item:hover .section-diensten_link.is-news{padding-left:0;padding-right:0}
+.nieuws--item .button-circle.blue{width:40px;height:40px;color:#fff}
+.nieuws--item .button-circle.blue [class*=icon-embed]{color:#fff!important}
+.nieuws--item .button-circle > .w-embed::before{transition:transform var(--vn-dur-fast) var(--vn-ease)}
+.nieuws--item:hover .button-circle.blue{background:var(--vn-brand-hover);color:#fff}
+.nieuws--item:hover .button-circle > .w-embed::before{transform:translateX(2px)}
