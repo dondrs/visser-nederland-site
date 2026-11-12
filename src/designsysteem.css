@@ -29,6 +29,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .plan-route.plan-route,.button-3.is-secondary,.locatie_button.locatie_button,.vn-button--small.vn-button--small{height:40px;padding:0 16px;font-size:.9375rem}
 .plan-route p,.locatie_button p{margin:0;color:inherit;font:inherit}
 .plan-route .icon-embed-xxsmall,.locatie_button .icon-embed-xxsmall,.contact-button_socials .icon-embed-xxsmall,.contact-button_whatsapp .icon-embed-xxsmall{width:16px;height:16px;color:var(--vn-brand)}
+.contact-button_socials .icon-embed-xxsmall,.contact-button_whatsapp .icon-embed-xxsmall{width:14px;height:14px;min-width:14px;min-height:14px}
 .vn-on-dark.plan-route,.vn-on-dark.button-3.is-secondary,.vn-on-dark.locatie_button,.vn-on-dark.next--button,.vn-on-dark.contact-button_socials,.vn-on-dark.contact-button_whatsapp,.vn-on-dark.vn-button__secondary,.button__secondary.vn-on-dark,.button__icon.vn-on-dark{color:#fff}
 .vn-on-dark.plan-route:hover,.vn-on-dark.button-3.is-secondary:hover,.vn-on-dark.locatie_button:hover,.vn-on-dark.next--button:hover,.vn-on-dark.contact-button_socials:hover,.vn-on-dark.contact-button_whatsapp:hover,.vn-on-dark.vn-button__secondary:hover,.button__secondary.vn-on-dark:hover,.button__icon.vn-on-dark:hover{background:rgba(0,143,219,.18)}
 .vn-on-dark.locatie_button .icon-embed-xxsmall,.vn-on-dark.contact-button_socials .icon-embed-xxsmall,.vn-on-dark.contact-button_whatsapp .icon-embed-xxsmall{color:var(--vn-ico-dark)}
