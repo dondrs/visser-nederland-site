@@ -232,3 +232,7 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 
 /* GEEN LAADANIMATIE – hero direct zichtbaar (12-11-2026) */
 html.vn-anim:not(.vn-anim-done) :is(.hero7_section,.section-hero_toepassing) :is(h1,p,.eyebrow-wrap,.button__primary,.button-tert,.horizontal-wrap_m),.hero7_section .button__primary,.hero7_section .eyebrow-wrap{opacity:1!important;transform:none!important}
+
+/* PRODUCTENOVERZICHT – meer ruimte tussen navbar en "Ons assortiment" (12-11-2026) */
+@media (min-width:992px){.hero-products-page.is-basic{padding-top:144px!important}}
+@media (max-width:991px){.hero-products-page.is-basic{padding-top:112px!important}}
