@@ -755,3 +755,22 @@
 })();
 
 
+
+
+// Nederlandse datums (12-11-2026): Webflow toont CMS-datums als "April 1, 2026".
+// Zet ze om naar "1 april 2026".
+(() => {
+  const EN = ["january","february","march","april","may","june","july","august","september","october","november","december"];
+  const NL = ["januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december"];
+  const zet = () =>
+    document.querySelectorAll('.news-item_date, [class*="_date"], [class*="-date"]').forEach((el) => {
+      if (el.children.length) return;
+      const m = el.textContent.trim().match(/^([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})$/);
+      if (!m) return;
+      const i = EN.indexOf(m[1].toLowerCase());
+      if (i > -1) el.textContent = m[2] + " " + NL[i] + " " + m[3];
+    });
+  zet();
+  // ook na filteren/laden van extra items
+  new MutationObserver(() => zet()).observe(document.body, { childList: true, subtree: true });
+})();
