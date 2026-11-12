@@ -144,3 +144,16 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 .nieuws--item .news-item_date{order:1;margin:0 0 -1rem;padding:0 .25rem;font-size:.875rem;line-height:1.4}
 .nieuws--item .vertical_wrap{order:2}
 .nieuws--item .section-diensten_link.is-news{order:3;margin-top:auto;align-self:flex-end;padding-bottom:0;border-bottom:0}
+
+/* KLEUREN – tertiair groen (Webflow-variabelen color/green/100-900, basis 500 = #48C96F) */
+:root{--vn-tertiary:var(--_primitives---color--green--500,#48c96f)}
+
+/* TOPBAR-PIL – "24/7 storingsdienst" als groene pil, telefoonnummer blauw (12-11-2026) */
+.vn-topbar .vn-topbar__call{display:inline-flex;align-items:center;gap:.625rem}
+.vn-topbar .vn-topbar__label{display:inline-flex;align-items:center;padding:.125rem .625rem;border-radius:999px;background:var(--vn-tertiary);color:var(--_primitives---color--green--900,#0e2f18);font-size:.8125rem;font-weight:600;line-height:1.4}
+.vn-topbar .vn-topbar__nummer{color:var(--vn-brand,#008fdb);font-weight:600}
+.vn-topbar .vn-topbar__call:hover .vn-topbar__nummer{text-decoration:underline;text-underline-offset:3px}
+
+/* DIENSTENLIJST – titels een slag groter (12-11-2026) */
+.section-diensten_link .vertical-wrap_xs > :is(h2,h3,h4,h5,h6){font-size:1.375rem;line-height:1.3}
+@media (max-width:767px){.section-diensten_link .vertical-wrap_xs > :is(h2,h3,h4,h5,h6){font-size:1.25rem}}
