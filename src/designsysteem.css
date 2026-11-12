@@ -150,7 +150,7 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 
 /* TOPBAR-PIL – "24/7 storingsdienst" als groene pil, telefoonnummer blauw (12-11-2026) */
 .vn-topbar .vn-topbar__call{display:inline-flex;align-items:center;gap:.625rem}
-.vn-topbar .vn-topbar__label{display:inline-flex;align-items:center;padding:.125rem .625rem;border-radius:999px;background:rgba(72,201,111,.16);color:var(--_primitives---color--green--300,#9adfaf);font-size:.8125rem;font-weight:600;line-height:1.4}
+.vn-topbar .vn-topbar__label{display:inline-flex;align-items:center;padding:.125rem .625rem;border-radius:999px;background:var(--_primitives---color--green--100,#f0faf3);color:var(--_primitives---color--green--800,#216e38);font-size:.8125rem;font-weight:600;line-height:1.4}
 .vn-topbar .vn-topbar__nummer{color:var(--vn-brand,#008fdb);font-weight:600}
 .vn-topbar .vn-topbar__call:hover .vn-topbar__nummer{text-decoration:underline;text-underline-offset:3px}
 
