@@ -181,11 +181,10 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 .vn-vac-offer__ask .vn-vac-rt--check li::before{position:static!important;display:inline-block!important;vertical-align:-6px;margin-right:.75rem;text-indent:0}
 
 /* PRIMARY – één maat overal, gelijk aan de navbarknop (12-11-2026): 40px hoog, witte cirkel 26px, pijl 14px */
-.button__primary.button__primary{height:40px!important;min-height:40px!important;border-radius:999px!important;background-color:var(--vn-brand,#008fdb)!important}
-.button__primary.button__primary:hover{background-color:#1aa3ec!important}
+.button__primary.button__primary{height:40px!important;min-height:40px!important;border-radius:999px!important}
 .button__primary .button__primary-wrap.button__primary-wrap{height:40px!important;min-height:40px!important;padding:7px 7px 7px 16px!important;gap:10px!important;border-width:0!important}
-.button__primary .button__primary-wrap > div:first-child,.button__primary .text-block-2{font-size:15px!important;font-weight:600!important;line-height:1!important;color:#fff!important}
-.button__primary .button__primary--inner-circle.button__primary--inner-circle{width:26px!important;height:26px!important;min-width:26px;border:0!important;background:#fff!important;transition:transform var(--vn-dur-fast) var(--vn-ease)}
+.button__primary .button__primary-wrap > div:first-child,.button__primary .text-block-2{font-size:15px!important;font-weight:600!important;line-height:1!important}
+.button__primary .button__primary--inner-circle.button__primary--inner-circle{width:26px!important;height:26px!important;min-width:26px;border:0!important;transition:transform var(--vn-dur-fast) var(--vn-ease)}
 .button__primary .button__primary--icon,.button__primary .button__primary--inner-circle .vn-icon{width:14px!important;height:14px!important}
 .button__primary:hover .button__primary--inner-circle{transform:translateX(2px)}
 /* kaartknoppen in het menu: zelfde maat */
