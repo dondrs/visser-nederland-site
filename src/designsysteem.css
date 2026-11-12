@@ -157,3 +157,13 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 /* DIENSTENLIJST – titels een slag groter (12-11-2026) */
 .section-diensten_link .vertical-wrap_xs > :is(h2,h3,h4,h5,h6){font-size:1.375rem;line-height:1.3}
 @media (max-width:767px){.section-diensten_link .vertical-wrap_xs > :is(h2,h3,h4,h5,h6){font-size:1.25rem}}
+
+/* MENU-MERKEN – merktegels wit met grotere logo's; contacttegel wit met donkere tekst (12-11-2026) */
+#vn-menu-producten .mega-nav__panel-link.is--partner{background:#fff!important;color:#00283d!important}
+#vn-menu-producten .mega-nav__panel-link.is--partner:hover{background:#eef6fb!important}
+#vn-menu-producten .mega-nav_partner--wrapper{display:flex;align-items:center;justify-content:center;width:auto!important;height:auto!important;padding:0!important;background:none!important;border-radius:0!important}
+#vn-menu-producten .mega-nav--partner{width:auto!important;height:3.5rem!important;max-width:9rem;object-fit:contain}
+#vn-menu-over-ons a.mega-nav__panel-link[href="/contact"]{background:#fff!important;color:#00283d!important}
+#vn-menu-over-ons a.mega-nav__panel-link[href="/contact"]:hover{background:#eef6fb!important}
+#vn-menu-over-ons a.mega-nav__panel-link[href="/contact"] .mega-nav__panel-link-desc{color:#4d5b63!important}
+#vn-menu-over-ons a.mega-nav__panel-link[href="/contact"]::before{color:var(--vn-brand,#008fdb)!important}
