@@ -239,3 +239,33 @@ html.vn-anim:not(.vn-anim-done) :is(.hero7_section,.section-hero_toepassing) :is
 
 /* NAVBAR VAST – topbar (24/7) en balk blijven even hoog bij scrollen, geen verspringing bij paginawissel (12-11-2026) */
 @media (min-width:1280px){html.vn-nav-scrolled{--vn-top-h:36px!important;--vn-bar-h:80px!important}}
+
+/* ===== VIDEOSPELER (12-11-2026) =====
+   Bediening onderin de Bunny-speler: afspelen/pauze, tijd, terugspoelbalk, geluid, volledig scherm.
+   Balk verschijnt zodra de video gestart is; tijdens afspelen verdwijnt hij na 2,5 s zonder muisbeweging. */
+.vn-vp-speler{position:relative;overflow:hidden;border-radius:inherit}
+.vn-vp{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;gap:12px;padding:40px 16px 14px;background:linear-gradient(to top,rgba(0,20,31,.75),rgba(0,20,31,0));color:#fff;opacity:0;transform:translateY(6px);pointer-events:none;transition:opacity .35s cubic-bezier(.23,1,.32,1),transform .35s cubic-bezier(.23,1,.32,1)}
+.vn-vp-speler[data-player-activated="true"].is-vn-actief .vn-vp,
+.vn-vp-speler[data-player-activated="true"]:not(.is-vn-speelt) .vn-vp,
+.vn-vp-speler[data-player-activated="true"] .vn-vp:focus-within{opacity:1;transform:none;pointer-events:auto}
+.vn-vp-speler.is-vn-speelt:not(.is-vn-actief){cursor:none}
+.vn-vp__btn{flex:none;display:flex;align-items:center;justify-content:center;width:32px;height:32px;padding:0;border:0;border-radius:999px;background:transparent;color:#fff;cursor:pointer;transition:background-color .2s cubic-bezier(.23,1,.32,1)}
+.vn-vp__btn:hover,.vn-vp__btn:focus-visible{background:rgba(255,255,255,.16);outline:none}
+.vn-vp__btn svg{width:18px;height:18px;display:block}
+.vn-vp__tijd{flex:none;min-width:36px;font:500 13px/1 Inter,system-ui,sans-serif;font-variant-numeric:tabular-nums;color:rgba(255,255,255,.9);text-align:center}
+.vn-vp__spoor{position:relative;flex:1;height:20px;cursor:pointer;touch-action:none;outline:none}
+.vn-vp__spoor::before,.vn-vp__buffer,.vn-vp__voortgang{content:"";position:absolute;left:0;top:50%;height:4px;margin-top:-2px;border-radius:999px;transition:height .2s cubic-bezier(.23,1,.32,1),margin-top .2s cubic-bezier(.23,1,.32,1)}
+.vn-vp__spoor::before{right:0;background:rgba(255,255,255,.25)}
+.vn-vp__buffer{width:0;background:rgba(255,255,255,.35)}
+.vn-vp__voortgang{width:0;background:var(--vn-brand,#008fdb)}
+.vn-vp__knop{position:absolute;right:-7px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:999px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3);transform:scale(0);transition:transform .2s cubic-bezier(.23,1,.32,1)}
+.vn-vp__spoor:hover .vn-vp__knop,.vn-vp__spoor:focus-visible .vn-vp__knop,.is-vn-slepen .vn-vp__knop{transform:scale(1)}
+.vn-vp__spoor:hover::before,.vn-vp__spoor:hover .vn-vp__buffer,.vn-vp__spoor:hover .vn-vp__voortgang,.is-vn-slepen .vn-vp__spoor::before,.is-vn-slepen .vn-vp__buffer,.is-vn-slepen .vn-vp__voortgang{height:6px;margin-top:-3px}
+/* Grote afspeelknop alleen vóór de start en bij pauze; tijdens afspelen klikt de hele video op pauze */
+.vn-vp-speler.is-vn-speelt .bunny-player__big-btn{opacity:0;transform:scale(.9)}
+.vn-vp-speler .bunny-player__big-btn{transition:opacity .35s cubic-bezier(.23,1,.32,1),transform .35s cubic-bezier(.23,1,.32,1)}
+/* Volledig scherm */
+.vn-vp-speler.is-vn-fs{border-radius:0;background:#000}
+.vn-vp-speler.is-vn-fs video,.vn-vp-speler.is-vn-fs .bunny-player__placeholder{object-fit:contain}
+@media (max-width:767px){.vn-vp{gap:8px;padding:32px 10px 10px}.vn-vp__tijd{min-width:30px;font-size:12px}.vn-vp__btn{width:30px;height:30px}}
+@media (hover:none){.vn-vp-speler[data-player-activated="true"] .vn-vp{opacity:1;transform:none;pointer-events:auto}}

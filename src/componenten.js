@@ -791,3 +791,172 @@
   if (document.readyState === "complete") zet();
   else window.addEventListener("load", zet);
 })();
+
+// ===== Videospeler: bediening (12-11-2026) =====
+// Voor elke Bunny-speler ([data-bunny-player-init]): balk onderin met afspelen/pauze, tijd, terugspoelbalk, geluid en volledig scherm.
+// Afspelen loopt via de bestaande knop [data-player-control="playpause"], zodat het lazy laden van de video blijft werken.
+(() => {
+  const ICON = {
+    play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg>',
+    pauze: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5" width="4" height="14" rx="1.2" fill="currentColor"/><rect x="13.5" y="5" width="4" height="14" rx="1.2" fill="currentColor"/></svg>',
+    geluid: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
+    stil: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="m16 9 6 6M22 9l-6 6"/></svg>',
+    groot: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>',
+    klein: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>',
+  };
+  const tijd = (s) => {
+    if (!isFinite(s) || s < 0) s = 0;
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return m + ":" + String(sec).padStart(2, "0");
+  };
+  const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+
+  function bouw(speler) {
+    if (speler.querySelector(".vn-vp")) return;
+    const video = speler.querySelector("video");
+    const startKnop = speler.querySelector('[data-player-control="playpause"]');
+    if (!video || !startKnop) return;
+
+    const balk = document.createElement("div");
+    balk.className = "vn-vp";
+    balk.innerHTML =
+      '<button type="button" class="vn-vp__btn" data-vp="play" aria-label="Afspelen">' + ICON.play + "</button>" +
+      '<span class="vn-vp__tijd" data-vp="nu">0:00</span>' +
+      '<div class="vn-vp__spoor" role="slider" tabindex="0" aria-label="Terugspoelen" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">' +
+      '<div class="vn-vp__buffer"></div><div class="vn-vp__voortgang"><span class="vn-vp__knop"></span></div></div>' +
+      '<span class="vn-vp__tijd" data-vp="duur">0:00</span>' +
+      '<button type="button" class="vn-vp__btn" data-vp="geluid" aria-label="Geluid uit">' + ICON.geluid + "</button>" +
+      '<button type="button" class="vn-vp__btn" data-vp="scherm" aria-label="Volledig scherm">' + ICON.groot + "</button>";
+    speler.appendChild(balk);
+    speler.classList.add("vn-vp-speler");
+
+    const $ = (s) => balk.querySelector(s);
+    const knopPlay = $('[data-vp="play"]');
+    const knopGeluid = $('[data-vp="geluid"]');
+    const knopScherm = $('[data-vp="scherm"]');
+    const nu = $('[data-vp="nu"]');
+    const duur = $('[data-vp="duur"]');
+    const spoor = $(".vn-vp__spoor");
+    const voortgang = $(".vn-vp__voortgang");
+    const buffer = $(".vn-vp__buffer");
+
+    // klikken in de balk mogen niet doorlopen naar de grote afspeelknop
+    ["click", "pointerdown", "mousedown", "touchstart"].forEach((t) =>
+      balk.addEventListener(t, (e) => e.stopPropagation())
+    );
+
+    const speelPauze = () => startKnop.click();
+    knopPlay.addEventListener("click", speelPauze);
+
+    knopGeluid.addEventListener("click", () => {
+      video.muted = !video.muted;
+      if (!video.muted && video.volume === 0) video.volume = 1;
+      speler.setAttribute("data-player-muted", video.muted ? "true" : "false");
+      werkGeluidBij();
+    });
+    function werkGeluidBij() {
+      knopGeluid.innerHTML = video.muted ? ICON.stil : ICON.geluid;
+      knopGeluid.setAttribute("aria-label", video.muted ? "Geluid aan" : "Geluid uit");
+    }
+
+    knopScherm.addEventListener("click", () => {
+      if (fsEl()) {
+        (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      } else if (speler.requestFullscreen) {
+        speler.requestFullscreen();
+      } else if (speler.webkitRequestFullscreen) {
+        speler.webkitRequestFullscreen();
+      } else if (video.webkitEnterFullscreen) {
+        video.webkitEnterFullscreen(); // iPhone
+      }
+    });
+    const fsWissel = () => {
+      const aan = fsEl() === speler;
+      speler.classList.toggle("is-vn-fs", aan);
+      knopScherm.innerHTML = aan ? ICON.klein : ICON.groot;
+      knopScherm.setAttribute("aria-label", aan ? "Volledig scherm sluiten" : "Volledig scherm");
+    };
+    document.addEventListener("fullscreenchange", fsWissel);
+    document.addEventListener("webkitfullscreenchange", fsWissel);
+
+    function teken() {
+      const d = video.duration;
+      const p = d ? (video.currentTime / d) * 100 : 0;
+      voortgang.style.width = p + "%";
+      spoor.setAttribute("aria-valuenow", Math.round(p));
+      nu.textContent = tijd(video.currentTime);
+      if (d) duur.textContent = tijd(d);
+      if (d && video.buffered.length) buffer.style.width = (video.buffered.end(video.buffered.length - 1) / d) * 100 + "%";
+    }
+    function status() {
+      const speelt = !video.paused && !video.ended;
+      knopPlay.innerHTML = speelt ? ICON.pauze : ICON.play;
+      knopPlay.setAttribute("aria-label", speelt ? "Pauzeren" : "Afspelen");
+      speler.classList.toggle("is-vn-speelt", speelt);
+      toon();
+    }
+    ["timeupdate", "durationchange", "loadedmetadata", "progress", "seeked"].forEach((t) => video.addEventListener(t, teken));
+    ["play", "playing", "pause", "ended"].forEach((t) => video.addEventListener(t, status));
+    video.addEventListener("volumechange", werkGeluidBij);
+
+    // terugspoelen: klikken en slepen
+    let slepen = false;
+    function zoek(e) {
+      const r = spoor.getBoundingClientRect();
+      const f = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+      if (video.duration) {
+        video.currentTime = f * video.duration;
+        teken();
+      }
+    }
+    spoor.addEventListener("pointerdown", (e) => {
+      if (!video.duration) return;
+      slepen = true;
+      spoor.setPointerCapture(e.pointerId);
+      speler.classList.add("is-vn-slepen");
+      zoek(e);
+    });
+    spoor.addEventListener("pointermove", (e) => slepen && zoek(e));
+    const stop = () => {
+      slepen = false;
+      speler.classList.remove("is-vn-slepen");
+    };
+    spoor.addEventListener("pointerup", stop);
+    spoor.addEventListener("pointercancel", stop);
+    spoor.addEventListener("keydown", (e) => {
+      if (!video.duration) return;
+      if (e.key === "ArrowRight") video.currentTime = Math.min(video.duration, video.currentTime + 5);
+      else if (e.key === "ArrowLeft") video.currentTime = Math.max(0, video.currentTime - 5);
+      else return;
+      e.preventDefault();
+    });
+
+    // balk tonen bij bewegen, na 2,5 s stil tijdens afspelen weer weg
+    let timer;
+    function toon() {
+      speler.classList.add("is-vn-actief");
+      clearTimeout(timer);
+      if (!video.paused) timer = setTimeout(() => !slepen && speler.classList.remove("is-vn-actief"), 2500);
+    }
+    speler.addEventListener("pointermove", toon);
+    speler.addEventListener("pointerdown", toon);
+    balk.addEventListener("focusin", toon);
+
+    werkGeluidBij();
+    teken();
+    status();
+  }
+
+  function init() {
+    document.querySelectorAll("[data-bunny-player-init]").forEach((s) => {
+      try {
+        bouw(s);
+      } catch (e) {
+        console.warn("[Visser] videobediening faalde", e);
+      }
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();

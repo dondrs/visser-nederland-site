@@ -26,7 +26,8 @@
 
   // Oude scroll-/hero-attributen: alles direct zichtbaar (geen animatie meer)
   function allesZichtbaar() {
-    gsap.set(".hero7_section .button__primary, .hero7_section .eyebrow-wrap, [GSAP-fade], [GSAP-fade] [GSAP-fade='target'], [GSAP-stagger-text], [data-vn-anim], [data-animate-section] *, .parallax-wrapper", {
+    // 12-11: [data-animate-section] * eruit; zette ook de donkere laag en laadlaag van de videospeler op opacity 1 (zwart beeld).
+    gsap.set(".hero7_section .button__primary, .hero7_section .eyebrow-wrap, [GSAP-fade], [GSAP-fade] [GSAP-fade='target'], [GSAP-stagger-text], [data-vn-anim], .parallax-wrapper", {
       opacity: 1,
       clearProps: "transform",
     });
