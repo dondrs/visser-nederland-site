@@ -563,3 +563,21 @@
 })();
 
 
+
+
+// Producten klikbaar (12-11-2026): op desktop opent het menu bij hover, dus een muisklik
+// op "Producten" gaat naar /producten. Toetsenbord (Enter/spatie) en touch openen het menu zoals voorheen.
+(() => {
+  const desktop = window.matchMedia("(min-width: 1280px) and (hover: hover) and (pointer: fine)");
+  document.addEventListener(
+    "click",
+    (e) => {
+      const knop = e.target.closest && e.target.closest('[aria-controls="vn-menu-producten"]');
+      if (!knop || !desktop.matches || e.detail === 0) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      location.href = "/producten";
+    },
+    true
+  );
+})();
