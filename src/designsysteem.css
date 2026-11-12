@@ -126,7 +126,6 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 .nieuws--item .button-circle.blue [class*=icon-embed]{color:#fff!important}
 .nieuws--item .button-circle > .w-embed::before{transition:transform var(--vn-dur-fast) var(--vn-ease)}
 .nieuws--item:hover .button-circle.blue{background:var(--vn-brand-hover);color:#fff}
-.nieuws--item:hover .button-circle > .w-embed::before{transform:translateX(2px)}
 
 /* CATEGORIE-PIL – categorie als eyebrow-pil in de foto van nieuws-/projectkaarten (12-11-2026) */
 .news_img-wrapper{position:relative}
@@ -186,7 +185,6 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 .button__primary .button__primary-wrap > div:first-child,.button__primary .text-block-2{font-size:15px!important;font-weight:600!important;line-height:1!important}
 .button__primary .button__primary--inner-circle.button__primary--inner-circle{width:26px!important;height:26px!important;min-width:26px;border:0!important;transition:transform var(--vn-dur-fast) var(--vn-ease)}
 .button__primary .button__primary--icon,.button__primary .button__primary--inner-circle .vn-icon{width:14px!important;height:14px!important}
-.button__primary:hover .button__primary--inner-circle{transform:translateX(2px)}
 /* kaartknoppen in het menu: zelfde maat */
 .mega-nav .has--card .mega-nav__card-cta,.mega-nav .has--card a.mega-nav__card-cta[href]{height:40px!important;min-height:40px!important;padding:0 7px 0 16px!important;gap:10px!important;border-radius:999px!important;background:var(--vn-brand,#008fdb)!important;color:#fff!important;font-size:15px!important;font-weight:600!important;line-height:1!important}
 .mega-nav .has--card .mega-nav__card-cta:hover,.mega-nav .has--card a.mega-nav__card-cta[href]:hover{background:#1aa3ec!important}
@@ -215,5 +213,19 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 .global-footer .footer-social-icon:hover .icon-embed-xxsmall{color:#fff!important}
 .global-footer h6.footer-h6{margin:0 0 .25rem!important;font-family:"Inter Variablefont Opsz Wght",Arial,sans-serif!important;font-size:12px!important;font-weight:600!important;line-height:1.4!important;letter-spacing:.08em!important;text-transform:uppercase!important;color:rgba(250,250,250,.55)!important}
 .global-footer .footer-grid > .vertical-wrap_s > h6:not(.footer-h6){display:inline-flex!important;align-self:flex-start;padding:.125rem .625rem!important;border-radius:999px;background:var(--_primitives---color--green--100,#f0faf3);color:var(--_primitives---color--green--800,#216e38)!important;font-family:"Inter Variablefont Opsz Wght",Arial,sans-serif!important;font-size:13px!important;font-weight:600!important;line-height:1.4!important}
-.global-footer .footer-link,.global-footer .footer-link p{color:rgba(250,250,250,.85)!important;text-decoration:none;transition:color var(--vn-dur-fast) var(--vn-ease)}
-.global-footer .footer-link:hover,.global-footer .footer-link:hover p{color:#fff!important;text-decoration:underline;text-underline-offset:3px}
+.global-footer .horizontal-wrap_s.footer-link,.global-footer .horizontal-wrap_s.footer-link:hover{padding-left:0!important;padding-right:0!important;background:none!important;border-radius:0!important;text-decoration:none!important;transition:none!important}
+.global-footer .horizontal-wrap_s.footer-link p{color:rgba(250,250,250,.85);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0% 1px no-repeat;padding-bottom:1px}
+@media (hover:none){.global-footer .horizontal-wrap_s.footer-link:hover p{color:#fff}}
+
+/* HOVERS MET GSAP (animaties.js): CSS animeert hier geen transform meer, anders botsen ze */
+.button__primary--inner-circle,.mega-nav__card-cta-icon,.button-circle > .w-embed,.nieuws--item,.vn-pcard,.product-card,.product__item--card,.slider-card,.toepassing-card,.toepassing-card-2,.career_card-filled,.portfolio1_card{transition-property:background-color,box-shadow,border-color,color,opacity!important;transition-duration:.35s!important;transition-timing-function:var(--vn-ease)!important}
+.mega-nav .has--card .mega-nav__card-cta:hover .mega-nav__card-cta-icon{transform:none}
+
+/* PRIMARY ZONDER COMPONENT – zelfde maat als de navbarknop (CTA-blok productpagina, oude losse knoppen) */
+.vn-pdp-cta__btn.vn-pdp-cta__btn{height:40px!important;min-height:40px!important;padding:0 7px 0 16px!important;gap:10px!important;border-radius:999px!important;background:var(--vn-brand,#008fdb)!important;color:#fff!important;font-size:15px!important;font-weight:600!important;line-height:1!important}
+.vn-pdp-cta__btn.vn-pdp-cta__btn:hover{background:#1aa3ec!important}
+.vn-pdp-cta__btn::after{width:26px!important;height:26px!important;background-size:14px!important;transition:transform .45s cubic-bezier(.215,.61,.355,1)!important}
+.vn-pdp-cta__btn:hover::after{transform:translateX(3px)!important}
+.vn-pdp-cta__phone{min-height:40px!important}
+.vn-pdp-cta__phone::before{width:40px!important;height:40px!important}
+.blue-button.blue-button,.vn-button__primary.vn-button__primary,.button-3.is-primary{height:40px!important;padding:0 16px!important;font-size:15px!important}
