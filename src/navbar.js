@@ -581,3 +581,25 @@
     true
   );
 })();
+
+
+// Menuknoppen: zelfde pijl als de navbarknop (12-11-2026). De kaartknoppen in het menu
+// hadden een chevron (>), de hoofdknop een pijl (->). Neem het icoon van de hoofdknop over.
+(() => {
+  const zet = () => {
+    const bron = document.querySelector(".mega-nav__bar .button__primary .vn-icon svg");
+    if (!bron) return;
+    document.querySelectorAll("svg.mega-nav__card-cta-icon").forEach((ic) => {
+      if (ic.dataset.vnPijl) return;
+      ic.setAttribute("viewBox", bron.getAttribute("viewBox") || "0 0 24 24");
+      ic.innerHTML = bron.innerHTML;
+      ["fill", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin"].forEach((a) => {
+        const v = bron.getAttribute(a);
+        if (v) ic.setAttribute(a, v);
+      });
+      ic.dataset.vnPijl = "1";
+    });
+  };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", zet);
+  else zet();
+})();

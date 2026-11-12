@@ -229,3 +229,6 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 .vn-pdp-cta__phone{min-height:40px!important}
 .vn-pdp-cta__phone::before{width:40px!important;height:40px!important}
 .blue-button.blue-button,.vn-button__primary.vn-button__primary,.button-3.is-primary{height:40px!important;padding:0 16px!important;font-size:15px!important}
+
+/* GEEN LAADANIMATIE – hero direct zichtbaar (12-11-2026) */
+html.vn-anim:not(.vn-anim-done) :is(.hero7_section,.section-hero_toepassing) :is(h1,p,.eyebrow-wrap,.button__primary,.button-tert,.horizontal-wrap_m),.hero7_section .button__primary,.hero7_section .eyebrow-wrap{opacity:1!important;transform:none!important}

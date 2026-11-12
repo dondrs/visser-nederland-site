@@ -1,6 +1,6 @@
 // Visser Nederland – animaties (één GSAP-script, stijl "rustig")
 // 12-11-2026: scroll-in animaties ("appear on scroll") verwijderd op verzoek van Visser/DONDRS.
-// Wat blijft: de hero bij het laden (kort, eenmalig) en vloeiende hovers met GSAP.
+// 12-11-2026: ook de hero-animatie bij het laden is weg. Wat blijft: vloeiende hovers met GSAP.
 //
 // Hovers (alleen op apparaten met muis, niet bij prefers-reduced-motion):
 //   - Button__primary en menuknoppen: de witte cirkel schuift 3px op
@@ -24,30 +24,9 @@
     return;
   }
 
-  // 1. Hero: eyebrow, kop, tekst en knoppen na elkaar bij laden (geen scroll-animatie)
-  function hero() {
-    const h1 = document.querySelector("main h1, .main-wrapper h1, h1");
-    const sectie = h1 && (h1.closest("section, .hero7_section, .section-hero_toepassing") || h1.parentElement);
-    if (!sectie) return klaar();
-    const items = [
-      ...sectie.querySelectorAll(
-        ".eyebrow-wrap, h1, h1 + p, h1 ~ p, h1 ~ div p, .button__primary, .button-tert, .blue-button, .horizontal-wrap_m"
-      ),
-    ].filter(
-      (el, i, arr) =>
-        !el.closest(".mega-nav, [data-menu-wrap], .vn-topbar, .w-modal") && !arr.some((o) => o !== el && o.contains(el))
-    );
-    if (!items.length) return klaar();
-    gsap.fromTo(
-      items,
-      { opacity: 0, y: Y },
-      { opacity: 1, y: 0, duration: DUR, ease: EASE, stagger: 0.08, delay: 0.1, clearProps: "transform", onStart: klaar }
-    );
-  }
-
-  // 2. Oude scroll-attributen: alles direct zichtbaar (geen animatie meer)
+  // Oude scroll-/hero-attributen: alles direct zichtbaar (geen animatie meer)
   function allesZichtbaar() {
-    gsap.set("[GSAP-fade], [GSAP-fade] [GSAP-fade='target'], [GSAP-stagger-text], [data-vn-anim], [data-animate-section] *, .parallax-wrapper", {
+    gsap.set(".hero7_section .button__primary, .hero7_section .eyebrow-wrap, [GSAP-fade], [GSAP-fade] [GSAP-fade='target'], [GSAP-stagger-text], [data-vn-anim], [data-animate-section] *, .parallax-wrapper", {
       opacity: 1,
       clearProps: "transform",
     });
@@ -122,7 +101,6 @@
   }
 
   try {
-    hero();
     allesZichtbaar();
     hovers();
   } catch (e) {
