@@ -97,7 +97,8 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 /* NIEUWSKAART – stijl staat in Webflow (Nieuws--item, news-item_date, align--wrapper.align--bottom.is-newsitem, section-diensten_link.is-blue.is-news). 13-11-2026.
    Code alleen voor wat Webflow niet kan: CMS-item zonder class, kinderen zonder eigen combo, hover van de ouder op het kind. */
 .w-dyn-item:has(> .nieuws--item){display:flex}
-.nieuws--item .vertical_wrap{order:2;padding-left:.25rem;padding-right:.25rem}
+.nieuws--item .vertical_wrap{padding-left:.25rem;padding-right:.25rem}
+.nieuws--item:has(> .align--wrapper.is-newsitem) > .vertical_wrap{order:2}
 .nieuws--item .button-circle.blue{width:40px;height:40px;color:#fff}
 .nieuws--item .button-circle.blue [class*=icon-embed]{color:#fff!important}
 .nieuws--item .button-circle > .w-embed::before{transition:transform var(--vn-dur-fast) var(--vn-ease)}
