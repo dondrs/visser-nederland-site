@@ -59,10 +59,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .icon-embed-xxsmall-blue,.icon-embed-xxsmall.blue,.icon-embed-small.blue,.icon-embed-custom,.icon-embed-custom-4,.icon-embed-custom-5,.icon-xsmall-3,.icon-embed-xxsmall.dark-4,.icon-embed-xxsmall.dark-10{color:var(--vn-brand)}
 .contact_locatie .icon-embed-xxsmall,.horizontal-wrap_s .icon-embed-xxsmall{color:var(--vn-brand)}
 .vn-on-dark[class*=icon-embed],.vn-on-dark [class*=icon-embed],.footer-link .icon-embed-xxsmall,.horizontal-wrap_s.align--top .icon-embed-xxsmall{color:var(--vn-ico-dark)}
-.checkmark-wrap,.checkmark-wrap-2{background:transparent!important;border:0!important;color:var(--vn-brand)}
-.checkmark-wrap.color--orange{color:var(--vn-brand)}
-.checkmark-wrap.color--orange .icon-embed-custom_check{color:var(--vn-brand)}
-.vn-on-dark.checkmark-wrap,.vn-on-dark.checkmark-wrap-2{color:var(--vn-ico-dark)}
 .icon-wrap.icon-wrap.icon-wrap.icon-wrap,.usp-card .icon-embed-small.blue{display:flex;align-items:center;justify-content:center;flex:none;width:48px;height:48px;padding:12px;border:0;border-radius:12px;background:var(--vn-brand-tint);color:var(--vn-brand)}
 .icon-wrap.icon-wrap [class*=icon-embed].w-embed{width:24px;height:24px;color:var(--vn-brand)}
 .usp-card .icon-embed-small.blue{background:#fff}
@@ -82,9 +78,6 @@ a:hover > .button-circle.blue,a:hover .button-circle.blue{background:var(--vn-br
 
 /* ICONEN – oude gevulde vinkjes en pijltjes in losse embeds (o.a. CMS-templates, formulieren) tonen als lijnicoon */
 :root{--vn-i-check:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
-.checkmark-wrap > .w-embed,.checkmark-wrap-2 > .w-embed{display:flex;align-items:center;justify-content:center;width:20px;height:20px}
-.checkmark-wrap > .w-embed > svg,.checkmark-wrap-2 > .w-embed > svg{display:none}
-.checkmark-wrap > .w-embed::before,.checkmark-wrap-2 > .w-embed::before{content:"";width:20px;height:20px;background-color:currentColor;-webkit-mask:var(--vn-i-check) center/contain no-repeat;mask:var(--vn-i-check) center/contain no-repeat}
 .button-circle > .w-embed{display:flex;align-items:center;justify-content:center}
 .button-circle > .w-embed > svg{display:none}
 .button-circle > .w-embed::before{content:"";width:16px;height:16px;background-color:currentColor;-webkit-mask:var(--vn-i-arrow) center/contain no-repeat;mask:var(--vn-i-arrow) center/contain no-repeat}
@@ -146,10 +139,10 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 #vn-menu-over-ons a.mega-nav__panel-link[href="/contact"] .mega-nav__panel-link-desc{color:#4d5b63!important}
 #vn-menu-over-ons a.mega-nav__panel-link[href="/contact"]::before{color:var(--vn-brand,#008fdb)!important}
 
-/* CHECKMARKS – overal groen vinkje (tertiair, #48C96F) in een lichtgroen rondje (12-11-2026) */
+/* CHECKMARKS – rondje (24px, groen 18%) en kleur (color/green/500) staan in Webflow: Checkmark-wrap, Checkmark-wrap 2, icon-embed-custom_check (13px). 13-11-2026.
+   Code alleen voor wat Webflow niet kan: het vinkje zelf (oude svg in de embeds verbergen, nieuw vinkje via mask), de kleur op donker (vn-on-dark) en de vinkjes in de vacature-richtext (li::before). */
+.checkmark-wrap > .w-embed,.checkmark-wrap-2 > .w-embed{display:flex;align-items:center;justify-content:center;width:13px;height:13px;color:inherit}
 :root{--vn-i-check-b:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='M4.5 12.5l5 5L19.5 7'/%3E%3C/svg%3E");--vn-check-bg:rgba(72,201,111,.18)}
-.checkmark-wrap,.checkmark-wrap-2,.checkmark-wrap.color--orange{display:flex!important;align-items:center!important;justify-content:center!important;flex:none!important;width:24px!important;height:24px!important;min-width:24px;padding:0!important;border:0!important;border-radius:50%!important;background:var(--vn-check-bg)!important;color:var(--vn-tertiary,#48c96f)!important}
-.checkmark-wrap > .w-embed,.checkmark-wrap-2 > .w-embed{width:13px!important;height:13px!important;color:inherit!important}
 .checkmark-wrap > .w-embed > svg,.checkmark-wrap-2 > .w-embed > svg{display:none!important}
 .checkmark-wrap > .w-embed::before,.checkmark-wrap-2 > .w-embed::before{content:"";display:block;width:13px;height:13px;background-color:currentColor;-webkit-mask:var(--vn-i-check-b) center/contain no-repeat;mask:var(--vn-i-check-b) center/contain no-repeat}
 .vn-on-dark.checkmark-wrap,.vn-on-dark.checkmark-wrap-2{background:rgba(72,201,111,.2)!important;color:var(--_primitives---color--green--400,#74d390)!important}
