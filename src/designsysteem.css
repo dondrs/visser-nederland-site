@@ -9,19 +9,9 @@
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:1.5px solid var(--vn-brand);outline-offset:3px}
 .vn-on-dark:focus-visible,.vn-on-dark :focus-visible{outline-color:var(--vn-ico-dark)}
 
-/* PRIMARY – component Button__primary (varianten Blue, White, Dark, Alternative) */
-.button__primary.button__primary{border-radius:999px;background-color:var(--vn-brand);color:#fff;transition:background-color var(--vn-dur-fast) var(--vn-ease)}
-.button__primary.button__primary:hover{background-color:var(--vn-brand-hover)}
+/* PRIMARY – maat en kleur staan in Webflow (component Button__primary, class Blue-button). Hier alleen wat Webflow niet kan:
+   hover op donkere achtergrond (vn-on-dark wordt door het script in de head gezet). Losse knoppen: vn-button__primary in Webflow. */
 .button__primary.vn-on-dark:hover{background-color:#1aa3ec}
-.button__primary-wrap.button__primary-wrap{height:48px;padding:8px 8px 8px 20px;gap:12px;border-width:0;background:transparent;color:#fff}
-.button__primary.button__primary .button__primary-wrap > div:first-child,.button__primary .text-block-2{color:#fff;font-size:1rem;font-weight:600;line-height:1}
-.button__primary--inner-circle.button__primary--inner-circle{width:32px;height:32px;border:0;background:#fff}
-.button__primary--icon.button__primary--icon{width:16px;height:16px}
-.button__primary--inner-circle .vn-icon{width:16px;height:16px;color:var(--vn-brand)}
-
-/* PRIMARY zonder cirkel (oude losse knoppen) */
-.blue-button.blue-button,.vn-pdp-cta__btn.vn-pdp-cta__btn,.vn-button__primary.vn-button__primary,.button-3.is-primary{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 24px;border:0;border-radius:999px;background:var(--vn-brand);color:#fff;font-size:1rem;font-weight:600;line-height:1;text-decoration:none;transition:background-color var(--vn-dur-fast) var(--vn-ease)}
-.blue-button.blue-button:hover,.vn-pdp-cta__btn.vn-pdp-cta__btn:hover,.vn-button__primary.vn-button__primary:hover,.button-3.is-primary:hover{background:var(--vn-brand-hover);color:#fff}
 
 /* SECONDARY – component Button__secondary + oude classes; op donker witte tekst */
 .plan-route.plan-route,.button-3.is-secondary,.locatie_button.locatie_button,.next--button.next--button,.contact-button_socials.contact-button_socials,.contact-button_whatsapp.contact-button_whatsapp,.vn-button__secondary.vn-button__secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 20px;border:0;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1.5px var(--vn-brand);color:var(--vn-blue);font-size:1rem;font-weight:600;line-height:1;text-decoration:none;transition:background-color var(--vn-dur-fast) var(--vn-ease)}
@@ -179,17 +169,6 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 .vn-vac-offer__ask .vn-vac-rt--check li{padding-left:2.25rem!important;text-indent:-2.25rem}
 .vn-vac-offer__ask .vn-vac-rt--check li::before{position:static!important;display:inline-block!important;vertical-align:-6px;margin-right:.75rem;text-indent:0}
 
-/* PRIMARY – één maat overal, gelijk aan de navbarknop (12-11-2026): 40px hoog, witte cirkel 26px, pijl 14px */
-.button__primary.button__primary{height:40px!important;min-height:40px!important;border-radius:999px!important}
-.button__primary .button__primary-wrap.button__primary-wrap{height:40px!important;min-height:40px!important;padding:7px 7px 7px 16px!important;gap:10px!important;border-width:0!important}
-.button__primary .button__primary-wrap > div:first-child,.button__primary .text-block-2{font-size:15px!important;font-weight:600!important;line-height:1!important}
-.button__primary .button__primary--inner-circle.button__primary--inner-circle{width:26px!important;height:26px!important;min-width:26px;border:0!important;transition:transform var(--vn-dur-fast) var(--vn-ease)}
-.button__primary .button__primary--icon,.button__primary .button__primary--inner-circle .vn-icon{width:14px!important;height:14px!important}
-/* kaartknoppen in het menu: zelfde maat */
-.mega-nav .has--card .mega-nav__card-cta,.mega-nav .has--card a.mega-nav__card-cta[href]{height:40px!important;min-height:40px!important;padding:0 7px 0 16px!important;gap:10px!important;border-radius:999px!important;background:var(--vn-brand,#008fdb)!important;color:#fff!important;font-size:15px!important;font-weight:600!important;line-height:1!important}
-.mega-nav .has--card .mega-nav__card-cta:hover,.mega-nav .has--card a.mega-nav__card-cta[href]:hover{background:#1aa3ec!important}
-.mega-nav .has--card .mega-nav__card-cta-label{font-size:15px!important;font-weight:600!important;line-height:1!important}
-.mega-nav .has--card .mega-nav__card-cta-icon{box-sizing:border-box!important;width:26px!important;height:26px!important;padding:6px!important;border-radius:999px!important;background:#fff!important;color:var(--vn-brand,#008fdb)!important}
 /* kaartteksten in het menu: zelfde letter als de andere menutegels */
 .mega-nav .has--card .mega-nav__panel-link-text{font-family:"Inter Variablefont Opsz Wght",Arial,sans-serif!important;font-size:16px!important;font-weight:600!important;line-height:1.3!important}
 .mega-nav .has--card .mega-nav__panel-link-desc{font-family:"Inter Variablefont Opsz Wght",Arial,sans-serif!important;font-size:14px!important;font-weight:400!important;line-height:1.35!important}
@@ -218,17 +197,7 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 @media (hover:none){.global-footer .horizontal-wrap_s.footer-link:hover p{color:#fff}}
 
 /* HOVERS MET GSAP (animaties.js): CSS animeert hier geen transform meer, anders botsen ze */
-.button__primary--inner-circle,.mega-nav__card-cta-icon,.button-circle > .w-embed,.nieuws--item,.vn-pcard,.product-card,.product__item--card,.slider-card,.toepassing-card,.toepassing-card-2,.career_card-filled,.portfolio1_card{transition-property:background-color,box-shadow,border-color,color,opacity!important;transition-duration:.35s!important;transition-timing-function:var(--vn-ease)!important}
-.mega-nav .has--card .mega-nav__card-cta:hover .mega-nav__card-cta-icon{transform:none}
-
-/* PRIMARY ZONDER COMPONENT – zelfde maat als de navbarknop (CTA-blok productpagina, oude losse knoppen) */
-.vn-pdp-cta__btn.vn-pdp-cta__btn{height:40px!important;min-height:40px!important;padding:0 7px 0 16px!important;gap:10px!important;border-radius:999px!important;background:var(--vn-brand,#008fdb)!important;color:#fff!important;font-size:15px!important;font-weight:600!important;line-height:1!important}
-.vn-pdp-cta__btn.vn-pdp-cta__btn:hover{background:#1aa3ec!important}
-.vn-pdp-cta__btn::after{width:26px!important;height:26px!important;background-size:14px!important;transition:transform .45s cubic-bezier(.215,.61,.355,1)!important}
-.vn-pdp-cta__btn:hover::after{transform:translateX(3px)!important}
-.vn-pdp-cta__phone{min-height:40px!important}
-.vn-pdp-cta__phone::before{width:40px!important;height:40px!important}
-.blue-button.blue-button,.vn-button__primary.vn-button__primary,.button-3.is-primary{height:40px!important;padding:0 16px!important;font-size:15px!important}
+.button__primary--inner-circle,.button-circle > .w-embed,.nieuws--item,.vn-pcard,.product-card,.product__item--card,.slider-card,.toepassing-card,.toepassing-card-2,.career_card-filled,.portfolio1_card{transition-property:background-color,box-shadow,border-color,color,opacity!important;transition-duration:.35s!important;transition-timing-function:var(--vn-ease)!important}
 
 /* GEEN LAADANIMATIE – hero direct zichtbaar (12-11-2026) */
 html.vn-anim:not(.vn-anim-done) :is(.hero7_section,.section-hero_toepassing) :is(h1,p,.eyebrow-wrap,.button__primary,.button-tert,.horizontal-wrap_m),.hero7_section .button__primary,.hero7_section .eyebrow-wrap{opacity:1!important;transform:none!important}
