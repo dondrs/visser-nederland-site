@@ -73,8 +73,7 @@ a:hover > .button-circle.blue,a:hover .button-circle.blue{background:var(--vn-br
 :is(.eyebrow-wrap,.badge_horizontal-wrap) p{margin:0;font:inherit;letter-spacing:inherit;line-height:1;color:inherit;text-transform:inherit;position:relative;top:.045em}
 .eyebrow-wrap.vn-on-dark{background:rgba(242,148,0,.16);color:#ffd08a}
 
-/* KAARTEN – radius 16; hover staat in de Webflow-classes (lichte schaduw, geen rand) */
-.portfolio1_card,.about-card,.timeline3_card,.product__item--card,.contact-card,.usp-card,.usp__card,.process_step-card,.toepassing-card,.product-card,.career_card-filled{border-radius:16px}
+/* KAARTEN – radius 16px, hover en transitie staan in de Webflow-classes (13-11-2026) */
 
 /* ICONEN – oude gevulde vinkjes en pijltjes in losse embeds (o.a. CMS-templates, formulieren) tonen als lijnicoon */
 :root{--vn-i-check:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
@@ -95,11 +94,10 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 .vn-lijst-add{margin-top:0!important}
 
 
-/* NIEUWSKAART – hover-kaart met ruimte rondom, pijlknop zoals designsysteem (12-11-2026) */
-.nieuws--item{padding:.75rem .75rem 1.25rem!important;background-color:transparent;transition:background-color var(--vn-dur-fast) var(--vn-ease),box-shadow var(--vn-dur-fast) var(--vn-ease)}
-.nieuws--item:hover{background-color:#fff}
-.nieuws--item .vertical_wrap,.nieuws--item .align--wrapper{padding-left:.25rem;padding-right:.25rem}
-.nieuws--item .section-diensten_link.is-news,.nieuws--item:hover .section-diensten_link.is-news{padding-left:0;padding-right:0}
+/* NIEUWSKAART – stijl staat in Webflow (Nieuws--item, news-item_date, align--wrapper.align--bottom.is-newsitem, section-diensten_link.is-blue.is-news). 13-11-2026.
+   Code alleen voor wat Webflow niet kan: CMS-item zonder class, kinderen zonder eigen combo, hover van de ouder op het kind. */
+.w-dyn-item:has(> .nieuws--item){display:flex}
+.nieuws--item .vertical_wrap{order:2;padding-left:.25rem;padding-right:.25rem}
 .nieuws--item .button-circle.blue{width:40px;height:40px;color:#fff}
 .nieuws--item .button-circle.blue [class*=icon-embed]{color:#fff!important}
 .nieuws--item .button-circle > .w-embed::before{transition:transform var(--vn-dur-fast) var(--vn-ease)}
@@ -107,14 +105,6 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 
 /* CATEGORIE-PIL – in Webflow: blog_badge (positie linksboven in de foto), badge_horizontal-wrap (pil), badge-substract verborgen. */
 
-/* NIEUWSKAART-INDELING – datum boven de titel, pijlknop rechtsonder (12-11-2026) */
-.w-dyn-item:has(> .nieuws--item){display:flex}
-.nieuws--item{flex:1 1 auto}
-.nieuws--item .align--wrapper.is-newsitem{display:contents}
-.nieuws--item .news_img-wrapper{order:0}
-.nieuws--item .news-item_date{order:1;margin:0 0 -1rem;padding:0 .25rem;font-size:.875rem;line-height:1.4}
-.nieuws--item .vertical_wrap{order:2}
-.nieuws--item .section-diensten_link.is-news{order:3;margin-top:auto;align-self:flex-end;padding-bottom:0;border-bottom:0}
 
 /* KLEUREN – tertiair groen (Webflow-variabelen color/green/100-900, basis 500 = #48C96F) */
 :root{--vn-tertiary:var(--_primitives---color--green--500,#48c96f)}
@@ -177,7 +167,7 @@ h1,h2,h3,h4,h5,h6{-webkit-hyphens:manual;hyphens:manual}
 @media (hover:none){.global-footer .horizontal-wrap_s.footer-link:hover p{color:#fff}}
 
 /* HOVERS MET GSAP (animaties.js): CSS animeert hier geen transform meer, anders botsen ze */
-.button__primary--inner-circle,.button-circle > .w-embed,.nieuws--item,.vn-pcard,.product-card,.product__item--card,.slider-card,.toepassing-card,.toepassing-card-2,.career_card-filled,.portfolio1_card{transition-property:background-color,box-shadow,border-color,color,opacity!important;transition-duration:.35s!important;transition-timing-function:var(--vn-ease)!important}
+.button__primary--inner-circle,.button-circle > .w-embed,.vn-pcard,.slider-card,.toepassing-card-2,.portfolio1_card{transition-property:background-color,box-shadow,border-color,color,opacity!important;transition-duration:.35s!important;transition-timing-function:var(--vn-ease)!important}
 
 /* GEEN LAADANIMATIE – hero direct zichtbaar (12-11-2026) */
 html.vn-anim:not(.vn-anim-done) :is(.hero7_section,.section-hero_toepassing) :is(h1,p,.eyebrow-wrap,.button__primary,.button-tert,.horizontal-wrap_m),.hero7_section .button__primary,.hero7_section .eyebrow-wrap{opacity:1!important;transform:none!important}
