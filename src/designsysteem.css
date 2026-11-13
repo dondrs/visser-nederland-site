@@ -52,8 +52,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
 /* ICONEN – één kleur per achtergrond */
 .icon-embed-xxsmall-blue,.icon-embed-xxsmall.blue,.icon-embed-small.blue,.icon-embed-custom,.icon-embed-custom-4,.icon-embed-custom-5,.icon-xsmall-3,.icon-embed-xxsmall.dark-4,.icon-embed-xxsmall.dark-10{color:var(--vn-brand)}
-.contact_locatie .icon-embed-xxsmall,.horizontal-wrap_s .icon-embed-xxsmall{color:var(--vn-brand)}
-.vn-on-dark[class*=icon-embed],.vn-on-dark [class*=icon-embed],.horizontal-wrap_s.align--top .icon-embed-xxsmall{color:var(--vn-ico-dark)}
+/* standaardkleur iconen; :where = lage voorrang, zodat combo's in Webflow (zoals icon-embed-xxsmall.is-footer) winnen */
+:where(.contact_locatie,.horizontal-wrap_s) .icon-embed-xxsmall{color:var(--vn-brand)}
+.vn-on-dark[class*=icon-embed],.vn-on-dark [class*=icon-embed]{color:var(--vn-ico-dark)}
 .icon-wrap.icon-wrap.icon-wrap.icon-wrap,.usp-card .icon-embed-small.blue{display:flex;align-items:center;justify-content:center;flex:none;width:48px;height:48px;padding:12px;border:0;border-radius:12px;background:var(--vn-brand-tint);color:var(--vn-brand)}
 .icon-wrap.icon-wrap [class*=icon-embed].w-embed{width:24px;height:24px;color:var(--vn-brand)}
 .usp-card .icon-embed-small.blue{background:#fff}
